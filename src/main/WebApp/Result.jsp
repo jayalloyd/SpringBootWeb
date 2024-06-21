@@ -1,8 +1,11 @@
 <%@page language="java"%>
 <html>
-<head>result is</head>
-<body >
+<head> result is:  ${result}
 
+
+
+</head>
+<body >
 
 </body>
 </html>
