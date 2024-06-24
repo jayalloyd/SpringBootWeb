@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,14 +34,25 @@ public class HomeController  {
 //      //either JSTL Expression language ${result}
 //      return "Result.jsp";
 //    }
-    public String add(@RequestParam("num1")int num1, @RequestParam("num2")int num2, HttpSession session){//Now using request param only..removing HTTpServletrequest
-
+//    public String add(@RequestParam("num1")int num1, @RequestParam("num2")int num2, HttpSession session){//Now using request param only..removing HTTpServletrequest
+//
+//        int result=num1+num2;
+//        System.out.println("Result added");
+//
+//        //when we call add,dispatcher servlet is calling Result.jsp,ie two different pages
+//        // using session of servlet we can display result in a page
+//        session.setAttribute("result",result);
+//        //in result.jsp using session we can display the result <%=session.getAttribute("result)%>
+//        //either JSTL Expression language ${result}
+//        return "Result.jsp";
+//    }
+    public String add(@RequestParam("num1")int num1, @RequestParam("num2")int num2, Model model){//Now using model object to get rid of HttpSession
         int result=num1+num2;
         System.out.println("Result added");
 
         //when we call add,dispatcher servlet is calling Result.jsp,ie two different pages
         // using session of servlet we can display result in a page
-        session.setAttribute("result",result);
+       model.addAttribute("result",result);
         //in result.jsp using session we can display the result <%=session.getAttribute("result)%>
         //either JSTL Expression language ${result}
         return "Result.jsp";
