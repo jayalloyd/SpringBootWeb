@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,10 +61,17 @@ public class HomeController  {
 //        //either JSTL Expression language ${result}
 //        return "Result.jsp";
 //    }
+//    @RequestMapping("add")
+//    public String add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, Model model) {
+//        int result = num1 + num2;
+//        model.addAttribute("result", result);
+//        return "Result";  // Resolves to /WEbApp/Views/Result.jsp
+//    }
     @RequestMapping("add")
-    public String add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, Model model) {
-        int result = num1 + num2;
-        model.addAttribute("result", result);
-        return "Result";  // Resolves to /WEbApp/Views/Result.jsp
-    }
+    public ModelAndView add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, ModelAndView mv) {
+        int result = num1 + num2;//instead of using model let us use modelandview object to return the view (data) and return mv object
+        mv.addObject("result",result);
+        mv.setViewName("Result");//setting view name as well to get the output,you can set multiple model and view objects like this and view name
+
+        return mv;      }
 }
