@@ -19,7 +19,8 @@ import java.io.PrintWriter;
 public class HomeController  {
      @RequestMapping("/")//annotation for mapping
     public String home(){
-        return "index";// index.jsp will be resolved to /WEB-INF/Views/index.jsp
+        return "index";// index.jsp will be resolved to /WEB-INF/Views/index.jsp using suffix and prefix in application.propperties file to get rid of .jsp extension
+//    }
      }
 
 
@@ -65,7 +66,7 @@ public class HomeController  {
 //    public String add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, Model model) {
 //        int result = num1 + num2;
 //        model.addAttribute("result", result);
-//        return "Result";  // Resolves to /WEbApp/Views/Result.jsp
+//        return "Result";  // Resolves to /WEbApp/Views/Result.jsp using suffix and prefix in application.propperties file to get rid of .jsp extension
 //    }
     @RequestMapping("add")
     public ModelAndView add(@RequestParam("num1") int num1, @RequestParam("num2") int num2, ModelAndView mv) {
